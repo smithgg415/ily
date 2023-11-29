@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var matriz=[[],[],[]]
+        for(lin=0;lin<3;lin++){
+            for(col=0;col<3;col++){
+                matriz[lin][col]=eval(prompt("Informe um número"))
+            }
+        }
+        var matriz2=[[],[],[]]
+        for(lin=0;lin<3;lin++){
+            for(col=0;col<3;col++){
+                matriz2=eval(prompt("Digite um número para a segunda matriz"))
+            }
+        }
+        var matrizsoma=[[],[],[]]
+        for(lin=0;lin<3;lin++){
+            for(col=0;col<3;col++){
+                matrizsoma[lin][col]=matriz1[lin][col]+matriz2[lin][col]
+        }
+    }
+    document.write("Matriz 1: "+matriz1)
+    document.write("<br>Matriz 2: "+matriz2)
+    document.write("<br>A soma dos números inseridos nas matrizes 1 e 2 é:"+matrizsoma)
+    </script>
+</body>
+</html>
