@@ -45,70 +45,80 @@
             bottom: 0;
             width: 100%;
         }
+
         #banner {
-      background: linear-gradient(to right, green, blue); /* Substitua as cores conforme necessário */
-      color: #fff;
-      text-align: center;
-      padding: 50px 0;
-      position: relative;
-    }
+            background: linear-gradient(to right, #63A, #41C0F2);
+            /* Substitua as cores conforme necessário */
+            color: #fff;
+            text-align: center;
+            padding: 50px 0;
+            position: relative;
+            /* border-top:2px solid black;
+      border-bottom:2px solid black;*/
+        }
 
-    #search-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
+        #search-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-    #search-form {
-      width: 300px; /* Ajuste a largura conforme necessário */
-    }
+        #search-form {
+            width: 300px;
+            /* Ajuste a largura conforme necessário */
+        }
 
-    #banner:hover::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background:linear-gradient(to right, blue, green); /* Ajuste a opacidade conforme necessário */
-      animation: sparkle 2s infinite; /* Ajuste a duração da animação conforme necessário */
-    }
+        #banner:hover::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #63A, #41C0F2);
+            /* Ajuste a opacidade conforme necessário */
+            animation: sparkle 2s infinite;
+            /* Ajuste a duração da animação conforme necessário */
+        }
 
-    @keyframes sparkle {
-      0%, 100% {
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-    }
-    .rectangle {
-      width: 100%;
-      height: 250px;
-      background-color: #3498db;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      margin: 10px 0;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease-in-out;
-    }
+        @keyframes sparkle {
+            0%,
+            100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
 
-    .rectangle i {
-      font-size: 3em;
-      margin-bottom: 10px;
-    }
+        .rectangle {
+            width: 100%;
+            height: 250px;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
 
-    .rectangle:hover {
-      transform: scale(1.05);
-      background-color:#3A63DF;
-      transition:1s;
-    }
-    #title{
-        margin-left:40px;
-        font-size:50px;
-    }
+        .rectangle i {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .rectangle:hover {
+            transform: scale(1.05);
+            background-color: #3A63DF;
+            transition: 1s;
+        }
+
+        #title {
+            margin-left: 40px;
+            font-size: 50px;
+        }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -119,101 +129,113 @@
 
     <div id="top-bar">
         <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
+            <div class="container-fluid">
 
-            <!-- Botão para toggle em telas pequenas -->
-            <span id="title">CriArt</span>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- Botão para toggle em telas pequenas -->
+                <span id="title">CriArt</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- Itens da Navbar -->
-            <div class="collapse navbar-collapse order-last" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="#"><i class="bi bi-house-door"></i> Início</a>
-                    </li>
-                    <li class="nav-item ml-5 mr-auto">
-                        <div class="dropdown ms-auto">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-bs-toggle="dropdown" aria-expanded="false">
+                <!-- Itens da Navbar -->
+                <div class="collapse navbar-collapse order-last" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item" style="justify-content:center;">
+                            <div class="dropdown ms-auto">
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-pencil"></i> Criar Design
                 </button>
-                <!-- Botão "Criar Design" -->
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" href="#">Logotipo (200x200)</a></li>
-                    <li><a class="dropdown-item" href="#">Capa para Facebook (820x312)</a></li>
-                    <li><a class="dropdown-item" href="#">Storie do Instagram (1080x1920)</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><span class="dropdown-item-text">Outros Formatos:</span></li>
-                    <li><a class="dropdown-item" href="#">Banner (1200x300)</a></li>
-                    <li><a class="dropdown-item" href="#">Cartão de Visita (3.5x2)</a></li>
-                </ul>
-        </div>
-                    </li>
-                </ul>
+                                <!-- Botão "Criar Design" -->
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="#">Logotipo (200x200)</a></li>
+                                    <li><a class="dropdown-item" href="#">Capa para Facebook (820x312)</a></li>
+                                    <li><a class="dropdown-item" href="#">Storie do Instagram (1080x1920)</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><span class="dropdown-item-text">Outros Formatos:</span></li>
+                                    <li><a class="dropdown-item" href="#">Banner (1200x300)</a></li>
+                                    <li><a class="dropdown-item" href="#">Cartão de Visita (3.5x2)</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            </div>
-            
-    </nav>
+
+        </nav>
     </div>
-      <div id="banner" class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <h1>Faça desenhos com facilidade aqui no CriArt</h1>
-        <div id="search-container">
-          <form id="search-form" class="form-inline">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Pesquisar">
-              <div class="input-group-append">
-                <button class="btn btn-light" type="button">
+    <div id="banner" class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h1>Faça desenhos com facilidade aqui no CriArt</h1>
+                <div id="search-container">
+                    <form id="search-form" class="form-inline">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Pesquisar">
+                            <div class="input-group-append">
+                                <button class="btn btn-light" type="button">
                   <i class="bi bi-search"></i> <!-- Você pode substituir pelo ícone de pesquisa desejado -->
                 </button>
-              </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-          </form>
         </div>
-      </div>
     </div>
-  </div>
-<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="rectangle">
+                    <i class="bi bi-instagram"></i>
+                    <h3>Storie do Instagram</h3>
+                    <p>Crie designs nesse formato!</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="rectangle">
+                    <i class="bi bi-facebook"></i>
+                    <h3>Capa do Facebook</h3>
+                    <p>Destaque sua página</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="rectangle">
+                    <i class="bi bi-flag"></i>
+                    <h3>Banners</h3>
+                    <p>Crie designs incríveis</p>
+                </div>
+            </div>
+            <!-- Adicione mais colunas conforme necessário -->
+            <div class="col-md-6">
+                <div class="rectangle">
+                    <i class="bi bi-image"></i>
+                    <h3>Panfletos</h3>
+                    <p>Crie panfletos com a sua imaginação!</p>
+                </div>
+            </div>
+        </div>
+        <!--
     <div class="row">
-      <div class="col-md-6">
+        <div class="col-md-6">
         <div class="rectangle">
-          <i class="bi bi-instagram"></i>
-          <h3>Storie do Instagram</h3>
-          <p>Crie designs nesse formato!</p>
+          <i class="bi bi-file-image"></i>
+          <h3>Logotipos</h3>
+          <p>Sua marca está precisando de um logotipo?<br>Crie aqui!</p>
         </div>
       </div>
       <div class="col-md-6">
         <div class="rectangle">
-          <i class="bi bi-facebook"></i>
-          <h3>Capa do Facebook</h3>
-          <p>Destaque sua página</p>
+          <i class="bi bi-file-image"></i>
+          <h3>Logotipos</h3>
+          <p>Sua marca está precisando de um logotipo?<br>Crie aqui!</p>
         </div>
       </div>
+    </div>-->
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="rectangle">
-          <i class="bi bi-image"></i>
-          <h3>Banners</h3>
-          <p>Crie designs incríveis</p>
-        </div>
-      </div>
-      <!-- Adicione mais colunas conforme necessário -->
-      <div class="col-md-6">
-        <div class="rectangle">
-          <i class="bi bi-flag"></i>
-          <h3>Outro Título</h3>
-          <p>Descrição do item</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
     <footer id="footer">
@@ -222,7 +244,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <script>
-
     </script>
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
