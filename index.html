@@ -46,7 +46,7 @@
             width: 100%;
         }
         #banner {
-      background: linear-gradient(to right, #4A90E2, #63B8FF); /* Substitua as cores conforme necessário */
+      background: linear-gradient(to right, green, blue); /* Substitua as cores conforme necessário */
       color: #fff;
       text-align: center;
       padding: 50px 0;
@@ -70,8 +70,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.2); /* Ajuste a opacidade conforme necessário */
-      animation: sparkle 1s infinite; /* Ajuste a duração da animação conforme necessário */
+      background:linear-gradient(to right, blue, green); /* Ajuste a opacidade conforme necessário */
+      animation: sparkle 2s infinite; /* Ajuste a duração da animação conforme necessário */
     }
 
     @keyframes sparkle {
@@ -102,6 +102,8 @@
 
     .rectangle:hover {
       transform: scale(1.05);
+      background-color:#3A63DF;
+      transition:1s;
     }
     #title{
         margin-left:40px;
@@ -132,10 +134,13 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="#"><i class="bi bi-house-door"></i> Início</a>
                     </li>
-                </ul>
-            </div>
-
-            <!-- Botão "Criar Design" -->
+                    <li class="nav-item ml-5 mr-auto">
+                        <div class="dropdown ms-auto">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-pencil"></i> Criar Design
+                </button>
+                <!-- Botão "Criar Design" -->
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li><a class="dropdown-item" href="#">Logotipo (200x200)</a></li>
                     <li><a class="dropdown-item" href="#">Capa para Facebook (820x312)</a></li>
@@ -147,13 +152,12 @@
                     <li><a class="dropdown-item" href="#">Banner (1200x300)</a></li>
                     <li><a class="dropdown-item" href="#">Cartão de Visita (3.5x2)</a></li>
                 </ul>
-            </div>
-            <div class="dropdown ms-auto">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-pencil"></i> Criar Design
-                </button>
         </div>
+                    </li>
+                </ul>
+            </div>
+            </div>
+            
     </nav>
     </div>
       <div id="banner" class="container-fluid">
