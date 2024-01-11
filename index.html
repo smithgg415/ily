@@ -82,10 +82,12 @@
         }
 
         @keyframes sparkle {
+
             0%,
             100% {
                 opacity: 0;
             }
+
             50% {
                 opacity: 1;
             }
@@ -133,29 +135,33 @@
 
                 <!-- Botão para toggle em telas pequenas -->
                 <span id="title">CriArt</span>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Itens da Navbar -->
                 <div class="collapse navbar-collapse order-last" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item" style="justify-content:center;">
                             <div class="dropdown ms-auto">
-                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-pencil"></i> Criar Design
-                </button>
-                                <!-- Botão "Criar Design" -->
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-pencil"></i> Criar Design
+                                </button>
+                                <!-- Botão "Criar Design"-->
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#">Logotipo (200x200)</a></li>
-                                    <li><a class="dropdown-item" href="#">Capa para Facebook (820x312)</a></li>
-                                    <li><a class="dropdown-item" href="#">Storie do Instagram (1080x1920)</a></li>
+                                    <!--<li><a class="dropdown-item" href="#">Logotipo (200x200)</a></li>-->
+                                    <li><a class="dropdown-item" href="artes.html">Capa para Facebook (820x312)</a></li>
+                                    <!--<li><a class="dropdown-item" href="#">Storie do Instagram (1080x1920)</a></li>-->
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
                                     <li><span class="dropdown-item-text">Outros Formatos:</span></li>
-                                    <li><a class="dropdown-item" href="#">Banner (1200x300)</a></li>
-                                    <li><a class="dropdown-item" href="#">Cartão de Visita (3.5x2)</a></li>
+                                    <li><a class="dropdown-item" href="#">Mais formatos estão por vir!<br>Aguarde
+                                            atualizações</a></li>
+                                    <!--   <li><a class="dropdown-item" href="#">Banner (1200x300)</a></li>
+                                    <li><a class="dropdown-item" href="#">Cartão de Visita (3.5x2)</a></li>-->
                                 </ul>
                             </div>
                         </li>
@@ -175,8 +181,9 @@
                             <input type="text" class="form-control" placeholder="Pesquisar">
                             <div class="input-group-append">
                                 <button class="btn btn-light" type="button">
-                  <i class="bi bi-search"></i> <!-- Você pode substituir pelo ícone de pesquisa desejado -->
-                </button>
+                                    <i class="bi bi-search"></i>
+                                    <!-- Você pode substituir pelo ícone de pesquisa desejado -->
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -186,39 +193,43 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <div class="rectangle">
-                    <i class="bi bi-instagram"></i>
-                    <h3>Storie do Instagram</h3>
-                    <p>Crie designs nesse formato!</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="rectangle">
-                    <i class="bi bi-facebook"></i>
-                    <h3>Capa do Facebook</h3>
-                    <p>Destaque sua página</p>
-                </div>
+                <div class="col-md-6">
+                    <div class="rectangle" href="#">
+                        <i class="bi bi-instagram"></i>
+                        <h3>Storie do Instagram</h3>
+                        <p>Crie designs nesse formato!</p>
+                        <p>Temporariamente indisponível</p>
+                    </div>
+        </div>
+         <div class="col-md-6">
+            <div class="rectangle" href="artes.html">
+                <i class="bi bi-facebook"></i>
+                <h3>Capa do Facebook</h3>
+                <p>Destaque sua página</p>
+                <p>Teste esse formato</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="rectangle">
-                    <i class="bi bi-flag"></i>
-                    <h3>Banners</h3>
-                    <p>Crie designs incríveis</p>
-                </div>
-            </div>
-            <!-- Adicione mais colunas conforme necessário -->
-            <div class="col-md-6">
-                <div class="rectangle">
-                    <i class="bi bi-image"></i>
-                    <h3>Panfletos</h3>
-                    <p>Crie panfletos com a sua imaginação!</p>
-                </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="rectangle" href="#">
+                <i class="bi bi-flag"></i>
+                <h3>Banners</h3>
+                <p>Crie designs incríveis</p>
+                <p>Temporariamente indisponível</p>
             </div>
         </div>
-        <!--
+        <!-- Adicione mais colunas conforme necessário -->
+        <div class="col-md-6">
+            <div class="rectangle" href="#">
+                <i class="bi bi-image"></i>
+                <h3>Panfletos</h3>
+                <p>Crie panfletos com a sua imaginação!</p>
+                <p>Temporariamente indisponível</p>
+            </div>
+        </div>
+    </div>
+    <!--
     <div class="row">
         <div class="col-md-6">
         <div class="rectangle">
