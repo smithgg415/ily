@@ -139,27 +139,49 @@
 
 <body>
   <div id="top-bar" class="text-light">
-    <span class="titulo">Capas para Facebook</span>
-    <div id="menu">
-      <div id="options">
-        <label for="thicknessInput"><i class="bi bi-list"
-            style="position:relative;font-size:40px;top:4px;right:-15px"></i></label>
-        <input type="number" id="thicknessInput" min="1" max="10" value="4" oninput="changeThickness(this.value)">
-        <label for="colorPicker">Cor:</label>
-        <input type="color" id="colorPicker" value="#000000" onchange="changeColor(this.value)">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+  
+          <!-- Botão para toggle em telas pequenas -->
+          <span id="title" class="navbar-brand">CriArt</span>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <!-- Itens da Navbar -->
+          <div class="collapse navbar-collapse order-last" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                      <label for="thicknessInput" class="nav-link"><i class="bi bi-list"
+                              style="position:relative;font-size:20px;top:4px;right:-15px"></i></label>
+                      <input type="number" id="thicknessInput" min="1" max="10" value="4"
+                          oninput="changeThickness(this.value)" class="nav-link">
+                  </li>
+                  <li class="nav-item">
+                      <label for="colorPicker" class="nav-link">Cor:</label>
+                      <input type="color" id="colorPicker" value="#000000" onchange="changeColor(this.value)"
+                          class="nav-link">
+                  </li>
+                  <li class="nav-item ml-2">
+                      <div class="toolSquare" data-toggle="modal" data-target="#libraryModal">
+                          <i class="bi bi-box"></i><span class="toolName">Itens para Colagem</span>
+                      </div>
+                  </li>
+              </ul>
+          </div>
       </div>
-      <div class="toolSquare ml-5" data-toggle="modal" data-target="#libraryModal">
-        <i class="bi bi-box"></i><span class="toolName">Itens para Colagem</span>
-      </div>
-    </div>
+  </nav>
+  
   </div>
+
   <div class="container mt-3">
     <div id="drawing-container">
       <canvas id="drawingArea" width="500" height="400"></canvas>
       <div>
-        <button class="btn btn-primary" id="saveButton" onclick="saveImage()"><i class="bi bi-download"></i> Salvar
+        <button class="btn btn-primary" id="saveButton" onclick="saveImage()"><i class="bi bi-download"> </i> Salvar
           Imagem</button>
-        <button class="btn btn-danger" id="clearButton" onclick="clearCanvas()"><i class="bi bi-trash"></i> Limpar
+        <button class="btn btn-danger" id="clearButton" onclick="clearCanvas()"><i class="bi bi-trash"> </i> Limpar
           Tela</button>
       </div>
     </div>
@@ -341,344 +363,6 @@
         $('#imageModal').modal('show');
       });
     });
-    < !DOCTYPE html >
-      <html lang="en">
-        <head>
-          <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-              <title>CriArt | Capa para Facebook</title>
-
-  <!-- Bootstrap CSS -->
-              <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-                  <style>
-                    body {
-                      margin: 0;
-                    padding: 0;
-                    min-height: 100vh;
-                    overflow-x: hidden;
-                    background-color: #f8f9fa;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    font-family: 'Arial', sans-serif;
-    }
-
-                    #top-bar {
-                      height: 50px;
-                    background: linear-gradient(to right, #64A, #41C0F2);
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    position: relative;
-                    padding: 0 10px;
-    }
-
-                    #top-bar span {
-                      color: white;
-    }
-
-                    .container {
-                      width: 100%;
-                    max-width: 1200px;
-                    margin-top: 20px;
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: space-around;
-    }
-
-                    #drawing-container {
-                      display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    width: 100%;
-                    max-width: 600px;
-                    margin-bottom: 20px;
-                    position: relative;
-    }
-
-                    #drawingArea {
-                      border: 1px solid #ced4da;
-                    width: 100%;
-                    max-width: 500px;
-                    height: auto;
-    }
-
-                    .tools-container {
-                      display: flex;
-                    flex-direction: column;
-                    gap: 10px;
-                    width: 100%;
-                    max-width: 400px;
-    }
-
-                    .toolSquare {
-                      cursor: pointer;
-                    padding: 10px;
-                    border: 1px solid #ced4da;
-                    border-radius: 5px;
-                    display: flex;
-                    align-items: center;
-                    transition: background-color 0.3s, color 0.3s;
-    }
-
-                    .toolSquare.active {
-                      background - color: #007bff;
-                    color: #fff;
-    }
-
-                    .toolName {
-                      margin - left: 5px;
-    }
-
-                    #colorPicker {
-                      margin - bottom: 10px;
-    }
-
-                    #saveButton, #clearButton {
-                      margin - top: 10px;
-    }
-
-                    #menu {
-                      display: flex;
-                    align-items: center;
-    }
-
-                    #options {
-                      display: flex;
-                    align-items: center;
-                    gap: 20px;
-    }
-
-                    #thicknessInput {
-                      width: 40px;
-                    text-align: center;
-    }
-
-                    #libraryModal {
-                      padding: 20px;
-    }
-
-                    .library-item {
-                      display: inline-block;
-                    cursor: pointer;
-                    margin: 5px;
-    }
-
-                    #imageModal img {
-                      max - width: 100%;
-                    height: auto;
-    }
-
-                    .titulo{
-                      font - size:30px;
-    }
-                  </style>
-                </head>
-                <body>
-                  <div id="top-bar" class="text-light">
-                    <span class="titulo">Capas para Facebook</span>
-                    <div id="menu">
-                      <div id="options">
-                        <label for="thicknessInput"><i class="bi bi-list" style="position:relative;font-size:40px;top:4px;right:-15px"></i></label>
-                        <input type="number" id="thicknessInput" min="1" max="10" value="4" oninput="changeThickness(this.value)">
-                          <label for="colorPicker">Cor:</label>
-                          <input type="color" id="colorPicker" value="#000000" onchange="changeColor(this.value)">
-                          </div>
-                          <div class="toolSquare ml-5" data-toggle="modal" data-target="#libraryModal">
-                            <i class="bi bi-box"></i><span class="toolName">Itens para Colagem</span>
-                          </div>
-                      </div>
-                    </div>
-                    <div class="container mt-3">
-                      <div id="drawing-container">
-                        <canvas id="drawingArea" width="820px" height="312px"></canvas>
-                        <div>
-                          <button class="btn btn-primary" id="saveButton" onclick="saveImage()"><i class="bi bi-download"></i> Salvar Imagem</button>
-                          <button class="btn btn-danger" id="clearButton" onclick="clearCanvas()"><i class="bi bi-trash"></i> Limpar Tela</button>
-                        </div>
-                      </div>
-                      <div class="tools-container">
-                        <div class="toolSquare" onclick="selectTool('pen', this)">
-                          <i class="bi bi-pencil"></i><span class="toolName">Lápis</span>
-                        </div>
-                        <div class="toolSquare" onclick="selectTool('bucket', this)">
-                          <i class="bi bi-bucket"></i><span class="toolName">Balde</span>
-                        </div>
-                        <div class="toolSquare" onclick="selectTool('eraser', this)">
-                          <i class="bi bi-eraser"></i><span class="toolName">Borracha</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="libraryModal" tabindex="-1" role="dialog" aria-labelledby="libraryModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="libraryModalLabel">Biblioteca de Itens para Colagem</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <div class="library-item" data-toggle="modal" data-target="#imageModal" data-src="https://th.bing.com/th/id/R.5b1d4097bff54b441f43614595205c33?rik=uMG%2fS0e7tOQPjg&pid=ImgRaw&r=0">
-                              <img src="https://th.bing.com/th/id/R.5b1d4097bff54b441f43614595205c33?rik=uMG%2fS0e7tOQPjg&pid=ImgRaw&r=0" alt="Item 1" height="100px" width="100px">
-                            </div>
-                            <div class="library-item" data-toggle="modal" data-target="#imageModal" data-src="https://www.bing.com/images/search?view=detailV2&ccid=SLmp89vY&id=BFF9D45CFF391F3E795DE395D4A74FAE116EB595&thid=OIP.SLmp89vYvlkb90MYRURU1QHaHa&mediaurl=https%3a%2f%2fpngimg.com%2fuploads%2fwifi%2fwifi_PNG62252.png&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.48b9a9f3dbd8be591bf74318454454d5%3frik%3dlbVuEa5Pp9SV4w%26pid%3dImgRaw%26r%3d0&exph=1600&expw=1600&q=Logo+De+WiFi&simid=607989081358799476&FORM=IRPRST&ck=992DC83A4215EF29306F83E8C455ED5A&selectedIndex=3&itb=1">
-                              <img src="https://www.bing.com/images/search?view=detailV2&ccid=SLmp89vY&id=BFF9D45CFF391F3E795DE395D4A74FAE116EB595&thid=OIP.SLmp89vYvlkb90MYRURU1QHaHa&mediaurl=https%3a%2f%2fpngimg.com%2fuploads%2fwifi%2fwifi_PNG62252.png&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.48b9a9f3dbd8be591bf74318454454d5%3frik%3dlbVuEa5Pp9SV4w%26pid%3dImgRaw%26r%3d0&exph=1600&expw=1600&q=Logo+De+WiFi&simid=607989081358799476&FORM=IRPRST&ck=992DC83A4215EF29306F83E8C455ED5A&selectedIndex=3&itb=1" alt="Item 2">
-                            </div>
-                            <div class="library-item" data-toggle="modal" data-target="#imageModal" data-src="https://www.bing.com/images/search?view=detailV2&ccid=2U%2bdZoIa&id=3E928ED8ED37B342A01D977ABB93481701E9EE8C&thid=OIP.2U-dZoIaFtN7oIKljsq3_QHaHa&mediaurl=https%3a%2f%2fpngimg.com%2fuploads%2fwifi%2fwifi_PNG62260.png&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.d94f9d66821a16d37ba082a58ecab7fd%3frik%3djO7pARdIk7t6lw%26pid%3dImgRaw%26r%3d0&exph=3333&expw=3333&q=Logo+De+WiFi&simid=607999019904796855&FORM=IRPRST&ck=36BE5CF67958135F6F24A6A8C473C440&selectedIndex=5&itb=1">
-                              <img src="https://www.bing.com/images/search?view=detailV2&ccid=2U%2bdZoIa&id=3E928ED8ED37B342A01D977ABB93481701E9EE8C&thid=OIP.2U-dZoIaFtN7oIKljsq3_QHaHa&mediaurl=https%3a%2f%2fpngimg.com%2fuploads%2fwifi%2fwifi_PNG62260.png&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.d94f9d66821a16d37ba082a58ecab7fd%3frik%3djO7pARdIk7t6lw%26pid%3dImgRaw%26r%3d0&exph=3333&expw=3333&q=Logo+De+WiFi&simid=607999019904796855&FORM=IRPRST&ck=36BE5CF67958135F6F24A6A8C473C440&selectedIndex=5&itb=1" alt="Item 3">
-                            </div>
-                            <!-- Adicione mais itens conforme necessário -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="imageModalLabel">Ajustar Imagem</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <img id="selectedImage" src="" alt="Imagem Selecionada">
-                              <label for="imageSize">Tamanho:</label>
-                              <input type="range" id="imageSize" min="50" max="200" step="1" value="100">
-                                <button class="btn btn-primary mt-3" onclick="addImageToDrawing()">Adicionar ao Desenho</button>
-                              </div>
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <!-- Bootstrap JS e dependências -->
-                      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.js"></script>
-
-  <script>
-                        let drawingArea = document.getElementById('drawingArea');
-                        let ctx = drawingArea.getContext('2d');
-                        let isDrawing = false;
-                        let currentColor = '#000000';
-                        let currentTool = 'pen';
-                        let lineWidth = 4;
-
-                        drawingArea.addEventListener('mousedown', startDrawing);
-                        drawingArea.addEventListener('mouseup', stopDrawing);
-                        drawingArea.addEventListener('mousemove', draw);
-                        drawingArea.addEventListener('mouseleave', stopDrawing);
-
-                        function startDrawing(e) {
-                          isDrawing = true;
-                        draw(e);
-    }
-
-                        function stopDrawing() {
-                          isDrawing = false;
-                        ctx.beginPath();
-    }
-
-                        function draw(e) {
-      if (!isDrawing) return;
-
-                        ctx.lineWidth = lineWidth;
-                        ctx.lineCap = 'round';
-
-                        if (currentTool === 'pen') {
-                          ctx.strokeStyle = currentColor;
-                        ctx.lineTo(
-                        e.clientX - drawingArea.getBoundingClientRect().left,
-                        e.clientY - drawingArea.getBoundingClientRect().top
-                        );
-                        ctx.stroke();
-                        ctx.beginPath();
-                        ctx.moveTo(
-                        e.clientX - drawingArea.getBoundingClientRect().left,
-                        e.clientY - drawingArea.getBoundingClientRect().top
-                        );
-      } else if (currentTool === 'bucket') {
-                          ctx.fillStyle = currentColor;
-                        ctx.fillRect(0, 0, drawingArea.width, drawingArea.height);
-      } else if (currentTool === 'eraser') {
-                          ctx.clearRect(
-                            e.clientX - drawingArea.getBoundingClientRect().left - lineWidth / 2,
-                            e.clientY - drawingArea.getBoundingClientRect().top - lineWidth / 2,
-                            lineWidth,
-                            lineWidth
-                          );
-      }
-    }
-
-                        function changeColor(color) {
-                          currentColor = color;
-    }
-
-                        function changeThickness(thickness) {
-                          lineWidth = thickness;
-    }
-
-                        function selectTool(tool, element) {
-                          let toolSquares = document.querySelectorAll('.toolSquare');
-                        toolSquares.forEach(function(toolSquare) {
-                          toolSquare.classList.remove('active');
-      });
-
-                        element.classList.add('active');
-
-                        let icon = element.querySelector('i');
-                        icon.classList.add('text-white');
-                        icon.classList.remove('text-dark');
-
-                        currentTool = tool;
-    }
-
-                        function saveImage() {
-                          let image = drawingArea.toDataURL('image/png').replace('image/png', 'image/octet-stream');
-                        let link = document.createElement('a');
-                        link.href = image;
-                        link.download = 'drawing.png';
-                        link.click();
-    }
-
-                        function clearCanvas() {
-                          ctx.clearRect(0, 0, drawingArea.width, drawingArea.height);
-    }
-
-                        function pasteItem(itemSrc) {
-                          let img = new Image();
-                        img.src = itemSrc;
-                        img.onload = function() {
-                          ctx.drawImage(img, 0, 0);
-      };
-    }
-
-                        function adjustImageSize(size) {
-                          let selectedImage = document.getElementById('selectedImage');
-                        selectedImage.style.width = `${size}%`;
-    }
-
-                        // Event listener to handle image paste
-                        $(document).ready(function() {
-                          $('.library-item').on('click', function () {
-                            let imageSrc = $(this).data('src');
-                            $('#selectedImage').attr('src', imageSrc);
-                            $('#imageModal').modal('show');
-                          });
-    });
-                        function addImageToDrawing() {
-                          let selectedImage = document.getElementById('selectedImage');
-                        ctx.drawImage(selectedImage, 0, 0, selectedImage.width, selectedImage.height);
-                        $('#imageModal').modal('hide');
-  }
   </script>
 </body>
 
