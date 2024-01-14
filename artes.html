@@ -9,23 +9,24 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <style>
     body {
-            font-family: Arial;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            overflow-x: hidden;
-        }
+      font-family: Arial;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow-x: hidden;
+    }
 
-        #top-bar {
-            background: linear-gradient(to right, #64A, #41C0F2);
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-            font-size: 24px;
-        }
+    #top-bar {
+      background: linear-gradient(to right, #64A, #41C0F2);
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-size: 24px;
+    }
 
     .container {
       width: 100%;
@@ -130,66 +131,88 @@
       border: none;
       border-radius: 10px;
     }
+
     #footer {
-            background: linear-gradient(to right, #007bff, #28a745);
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        .janela{
-          padding: 10px;
-          color: black;
-          background-color: #fff;
-          border: 2px solid;
-          font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        }
-        i > .janela:hover{
-          box-shadow: 0 0 3em black;
-        }
+      background: linear-gradient(to right, #007bff, #28a745);
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .icon-container {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .tooltip {
+      visibility: hidden;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 5px;
+      border-radius: 3px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -60px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .icon-container:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
   </style>
 </head>
 
 <body>
   <div id="top-bar">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
+      <div class="container-fluid">
 
-            <!-- Botão para toggle em telas pequenas -->
-            <a href="index.html"><button class="voltar bg-primary"><i class="bi bi-arrow-left"> </i>Voltar</button></a>
-            <span id="title" class="ml-2">Capa para Facebook <i class="bi bi-facebook ml-3"></i></span>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <!-- Botão para toggle em telas pequenas -->
+        <a href="index.html"><button class="voltar bg-primary"><i class="bi bi-arrow-left"> </i>Voltar</button></a>
+        <span id="title" class="ml-2">Capa para Facebook <i class="bi bi-facebook ml-3"></i></span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <!-- Itens da Navbar -->
-            <div class="collapse navbar-collapse order-last" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                  <li class="mt-3">
-                    <label for="thicknessInput">
-                        <i class="bi bi-list" style="font-size:25px;"><span class="janela">Espessura</span></i>
-                    </label>
-                    <input type="number" style="width:60px;" id="thicknessInput" min="1" max="10" value="4" oninput="changeThickness(this.value)">
-                </li>
-                <li>
-                    <label for="colorPicker" class="mt-4">Cor:</label>
-                    <input type="color" id="colorPicker" value="#000000" onchange="changeColor(this.value)">
-                </li>
-                <li>
-                    <div class="toolSquare mt-3" data-toggle="modal" data-target="#libraryModal">
-                        <i class="bi bi-box"></i>
-                        <span class="toolName">Itens para Colagem</span>
-                    </div>
-                </li>
-                </ul>
-            </div>
+        <!-- Itens da Navbar -->
+        <div class="collapse navbar-collapse order-last" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="mt-3">
+              <label for="thicknessInput">
+                <div class="icon-container">
+                  <i class="bi bi-list"></i>
+                  <div class="tooltip">Espessura</div>
+                </div>
+              </label>
+              <input type="number" style="width:60px;" id="thicknessInput" min="1" max="10" value="4"
+                oninput="changeThickness(this.value)">
+            </li>
+            <li>
+              <label for="colorPicker" class="mt-4">Cor:</label>
+              <input type="color" id="colorPicker" value="#000000" onchange="changeColor(this.value)">
+            </li>
+            <li>
+              <div class="toolSquare mt-3" data-toggle="modal" data-target="#libraryModal">
+                <i class="bi bi-box"></i>
+                <span class="toolName">Itens para Colagem</span>
+              </div>
+            </li>
+          </ul>
         </div>
+      </div>
 
     </nav>
-</div>
+  </div>
   <div class="container mt-3">
     <div id="drawing-container">
       <canvas id="drawingArea" width="820" height="312"></canvas>
@@ -263,9 +286,11 @@
 
   <footer id="footer">
     Todos os direitos reservados - CriArt® 2023
-</footer>
+  </footer>
   <!-- Bootstrap JS e dependências -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
