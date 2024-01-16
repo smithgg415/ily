@@ -278,9 +278,9 @@
                 $(".dropdown-menu a").each(function () {
                     var text = $(this).text().toLowerCase();
                     if (text.includes(searchTerm)) {
-                        $(this).parent().show(); // Use parent() para mostrar o item do dropdown
+                        $(this).parent().removeClass('d-none'); // Remova a classe d-none para mostrar o item do dropdown
                     } else {
-                        $(this).parent().hide(); // Use parent() para ocultar o item do dropdown
+                        $(this).parent().addClass('d-none'); // Adicione a classe d-none para ocultar o item do dropdown
                     }
                 });
             });
