@@ -27,6 +27,8 @@
         #top-bar {
             background: linear-gradient(to right, #28a745, #007bff);
             color: #fff;
+            width: 100%;
+            right: 0px;
             padding: 10px;
             text-align: center;
             font-size: 24px;
@@ -118,9 +120,10 @@
             margin-left: 20px;
             font-size: 50px;
         }
-        .subtexto{
-            opacity:0.7;
-            
+
+        .subtexto {
+            opacity: 0.7;
+
         }
     </style>
 </head>
@@ -185,7 +188,8 @@
                         </div>
                     </form>
                 </div>
-                            <p class="subtexto">Para encontrar o formato desejado, digite aqui, clique na lupa e em seguida em "Criar Design". O formato pesquisado estará lá!</p>
+                <p class="subtexto">Para encontrar o formato desejado, digite aqui, clique na lupa e em seguida em
+                    "Criar Design". O formato pesquisado estará lá!</p>
                 <!-- Você pode substituir pelo ícone de pesquisa desejado -->
                 </button>
             </div>
@@ -271,22 +275,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-GLhlTQ8iKUrVNJrNX+O5HAwnI4B06dQ1MTOqF70tF5Il1Zq5ZC73epnHrgOp+fcF"
         crossorigin="anonymous"></script>
-        <script>
-            $(document).ready(function () {
-        $("#search-button").click(function (e) {
-            e.preventDefault();
-            var searchTerm = $("#search-input").val().toLowerCase();
-            $(".dropdown-menu a").each(function () {
-                var text = $(this).text().toLowerCase();
-                if (text.includes(searchTerm)) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
+    <script>
+        $(document).ready(function () {
+            $("#search-button").click(function (e) {
+                e.preventDefault();
+                var searchTerm = $("#search-input").val().toLowerCase();
+                $(".dropdown-menu a").each(function () {
+                    var text = $(this).text().toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
             });
         });
-    });
-        </script>
+    </script>
 </body>
 
 </html>
