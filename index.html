@@ -41,7 +41,7 @@
         }
 
         #footer {
-            position: absolute;
+            position: relative;
             background: linear-gradient(to right, #007bff, #28a745);
             color: #fff;
             text-align: center;
@@ -50,6 +50,7 @@
             bottom: 0;
             width: 100%;
         }
+
         #search-container {
             display: flex;
             justify-content: center;
@@ -277,9 +278,9 @@
                 $(".dropdown-menu a").each(function () {
                     var text = $(this).text().toLowerCase();
                     if (text.includes(searchTerm)) {
-                        $(this).show();
+                        $(this).parent().show(); // Use parent() para mostrar o item do dropdown
                     } else {
-                        $(this).hide();
+                        $(this).parent().hide(); // Use parent() para ocultar o item do dropdown
                     }
                 });
             });
