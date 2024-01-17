@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Capa para facebook</title>
+  <!--jquery-->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow-x: hidden;
+    }
+
+    #top-bar {
+      background: linear-gradient(to right, #64A, #41C0F2);
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    #drawing-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    #drawingArea {
+      border: 1px solid #ced4da;
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+
+    .tools-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .toolSquare {
+      cursor: pointer;
+      padding: 10px;
+      border: 1px solid #ced4da;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .toolSquare.active {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .toolName {
+      margin-left: 5px;
+    }
+
+    #colorPicker {
+      margin-bottom: 10px;
+    }
+
+    #saveButton,
+    #clearButton {
+      margin-top: 10px;
+    }
+
+    #menu {
+      display: flex;
+      align-items: center;
+    }
+
+    #options {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    #thicknessInput {
+      width: 40px;
+      text-align: center;
+    }
+
+    #libraryModal {
+      padding: 20px;
+    }
+
+    .library-item {
+      display: inline-block;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    #imageModal img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .titulo {
+      font-size: 30px;
+    }
+
+    .voltar {
+      padding: 10px;
+      color: white;
+      border: none;
+      border-radius: 10px;
+    }
+
+    #footer {
+      background: linear-gradient(to right, #007bff, #28a745);
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .icon-container {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .tooltip {
+      visibility: hidden;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 8px;
+      border-radius: 8px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      /*top: 10px;*/
+      margin-left: -60px;
+      opacity: 0;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      transition: opacity 0.3s;
+    }
+
+    .icon-container:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+   /* #icn-facebook:hover{
+      color:blue;
+      transform: scale(1.10);
+    }*/
+  </style>
+  <link rel="website icon" type="png" href="https://images.vexels.com/media/users/3/223136/isolated/preview/984f500cf9de4519b02b354346eb72e0-facebook-icon-social-media-by-vexels.png">
+</head>
+
+<body>
+  <div id="top-bar">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a href="index.html"><button class="voltar bg-primary"><i class="bi bi-arrow-left"> </i>Voltar</button></a>
+        <span id="title" class="ml-2">Storie do Instagram <i class="bi bi-instagram ml-3" id="icn-facebook"></i></span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Itens da Navbar -->
+        <div class="collapse navbar-collapse order-last" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="mt-3">
+              <label for="thicknessInput">
+                <div class="icon-container">
+                  <i class="bi bi-list ml-3"></i>
+                  <div class="tooltip">Espessura</div>
+                </div>
+              </label>
+              <input type="number" style="width:60px;" id="thicknessInput" min="1" max="10" value="4"
+                oninput="changeThickness(this.value)">
+            </li>
+            <li>
+              <label for="colorPicker" class="mt-4 ml-3">Cor:</label>
+              <input type="color" id="colorPicker" value="#000000" onchange="changeColor(this.value)">
+            </li>
+            <!--<li>
+              <div class="toolSquare mt-3 ml-3" data-toggle="modal" data-target="#libraryModal">
+                <i class="bi bi-box"></i>
+                <span class="toolName">Itens para Colagem</span>
+              </div>
+            </li>-->
+          </ul>
+        </div>
+      </div>
+
+    </nav>
+  </div>
+  <div class="container mt-3">
+    <div id="drawing-container">
+      <canvas id="drawingArea" width="1080px" height="1920px"></canvas>
+      <div>
+        <button class="btn btn-primary" id="saveButton" onclick="saveImage()"><i class="bi bi-download"> </i> Salvar
+          Imagem</button>
+        <button class="btn btn-danger" id="clearButton" onclick="clearCanvas()"><i class="bi bi-trash"> </i> Limpar
+          Tela</button>
+      </div>
+    </div>
+    <div class="tools-container">
+      <div class="toolSquare" onclick="selectTool('pen', this)">
+        <i class="bi bi-pencil"></i><span class="toolName">Lápis</span>
+      </div>
+      <div class="toolSquare" onclick="selectTool('bucket', this)">
+        <i class="bi bi-bucket"></i><span class="toolName">Preencher</span>
+      </div>
+      <div class="toolSquare" onclick="selectTool('eraser', this)">
+        <i class="bi bi-eraser"></i><span class="toolName">Apagar</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="libraryModal" tabindex="-1" role="dialog" aria-labelledby="libraryModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="libraryModalLabel">Biblioteca de Itens para Colagem</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="library-item" data-toggle="modal" data-target="#imageModal"
+            data-src="https://th.bing.com/th/id/R.5b1d4097bff54b441f43614595205c33?rik=uMG%2fS0e7tOQPjg&pid=ImgRaw&r=0">
+            <img src="https://th.bing.com/th/id/R.5b1d4097bff54b441f43614595205c33?rik=uMG%2fS0e7tOQPjg&pid=ImgRaw&r=0"
+              alt="Item 1" height="100px" width="100px">
+          </div>
+          <div class="library-item" data-toggle="modal" data-target="#imageModal" data-src="item2.png">
+            <img src="item2.png" alt="Item 2">
+          </div>
+          <div class="library-item" data-toggle="modal" data-target="#imageModal" data-src="item3.png">
+            <img src="item3.png" alt="Item 3">
+          </div>
+          <!-- Adicione mais itens conforme necessário -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel">Ajustar Imagem</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img id="selectedImage" src="" alt="Imagem Selecionada">
+          <label for="imageSize">Tamanho:</label>
+          <input type="range" id="imageSize" min="50" max="200" step="1" value="100">
+          <button class="btn btn-primary mt-3" onclick="addImageToDrawing()">Adicionar ao Desenho</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    Todos os direitos reservados - CriArt® 2023
+  </footer>
+  <!-- Bootstrap JS e dependências -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.js"></script>
+
+  <script>
+    $(window).on('beforeunload', function () {
+        let drawingData = $('#canvas').html();
+        localStorage.setItem('savedDrawing', drawingData);
+      });
+    let drawingArea = document.getElementById('drawingArea');
+    let ctx = drawingArea.getContext('2d');
+    let isDrawing = false;
+    let currentColor = '#000000';
+    let currentTool = 'pen';
+    let lineWidth = 4;
+
+    drawingArea.addEventListener('mousedown', startDrawing);
+    drawingArea.addEventListener('mouseup', stopDrawing);
+    drawingArea.addEventListener('mousemove', draw);
+    drawingArea.addEventListener('mouseleave', stopDrawing);
+
+    function startDrawing(e) {
+      isDrawing = true;
+      draw(e);
+    }
+
+    function stopDrawing() {
+      isDrawing = false;
+      ctx.beginPath();
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+
+      ctx.lineWidth = lineWidth;
+      ctx.lineCap = 'round';
+
+      if (currentTool === 'pen') {
+        ctx.strokeStyle = currentColor;
+        ctx.lineTo(
+          e.clientX - drawingArea.getBoundingClientRect().left,
+          e.clientY - drawingArea.getBoundingClientRect().top
+        );
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(
+          e.clientX - drawingArea.getBoundingClientRect().left,
+          e.clientY - drawingArea.getBoundingClientRect().top
+        );
+      } else if (currentTool === 'bucket') {
+        ctx.fillStyle = currentColor;
+        ctx.fillRect(0, 0, drawingArea.width, drawingArea.height);
+      } else if (currentTool === 'eraser') {
+        ctx.clearRect(
+          e.clientX - drawingArea.getBoundingClientRect().left - lineWidth / 2,
+          e.clientY - drawingArea.getBoundingClientRect().top - lineWidth / 2,
+          lineWidth,
+          lineWidth
+        );
+      }
+    }
+
+    function changeColor(color) {
+      currentColor = color;
+    }
+
+    function changeThickness(thickness) {
+      lineWidth = thickness;
+    }
+
+    function selectTool(tool, element) {
+      let toolSquares = document.querySelectorAll('.toolSquare');
+      toolSquares.forEach(function (toolSquare) {
+        toolSquare.classList.remove('active');
+      });
+
+      element.classList.add('active');
+
+      let icon = element.querySelector('i');
+      icon.classList.add('text-white');
+      icon.classList.remove('text-dark');
+
+      currentTool = tool;
+    }
+
+    function saveImage() {
+      let image = drawingArea.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+      let link = document.createElement('a');
+      link.href = image;
+      link.download = 'drawing.png';
+      link.click();
+    }
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, drawingArea.width, drawingArea.height);
+    }
+
+    function pasteItem(itemSrc) {
+      let img = new Image();
+      img.src = itemSrc;
+      img.onload = function () {
+        ctx.drawImage(img, 0, 0);
+      };
+    }
+
+    function adjustImageSize(size) {
+      let selectedImage = document.getElementById('selectedImage');
+      selectedImage.style.width = `${size}%`;
+    }
+
+    // Event listener to handle image paste
+    $(document).ready(function () {
+      $('.library-item').on('click', function () {
+        let imageSrc = $(this).data('src');
+        $('#selectedImage').attr('src', imageSrc);
+        $('#imageModal').modal('show');
+      });
+    });
+  </script>
+</body>
+
+</html>
