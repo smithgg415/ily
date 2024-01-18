@@ -53,16 +53,38 @@
             position:relative;
             left:100px;
         }
+        #footer {
+            position: relative;
+            background: linear-gradient(to right, #007bff, #28a745);
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 5%;
+            bottom: 0;
+            width: 100%;
+        }
+        .sideBar{
+            position:relative;
+            left:0px;
+            top:0px;
+            width:100%;
+            text-align:center;
+            background:linear-gradient(to right, #64A, #41C0F2);
+            height:100%;
+            padding:3px;
+            font-size:20px;
+        }
     </style>
 </head>
 
 <body>
 <div id="top-bar">
-    <span class="title">CriArt|Emais</span>
                 <h3 style="position:relative;top:12px">Você tem alguma ideia? Envie para nós!</h3>
             </div>
+            <div class="sideBar text-light">CriArt | E-mails
+</div>
     <div class="container">
-        <form id="contact-form">
+        <form id="contact-form" action="https://formspree.io/f/xeqyodko" method="post">
             <div class="mb-3">
                 <label for="name" class="form-label">Nome</label>
                 <input type="text" class="form-control" id="name" name="name" required>
@@ -78,7 +100,9 @@
             <button type="submit" class="btn btn-primary"><i class="bi bi-envelope"></i> Enviar Mensagem</button>
         </form>
     </div>
-
+<footer id="footer">
+        Todos os direitos reservados - CriArt® 2023
+    </footer>
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha384-u7nUqjCn8F9K3wibhA9ZlWz7vN1V2ZGFVNCWxuF8vPdAVQNWp24hpLgmrKi9R5pP"
