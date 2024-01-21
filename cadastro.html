@@ -14,7 +14,7 @@
             background-color: #f8f9fa;
         }
         .navbar {
-            background-color: #343a40;
+            background:linear-gradient(to right, #64A, #41C0F2);
             color: #fff;
         }
         .navbar-brand {
@@ -42,7 +42,7 @@
             margin: 20px auto;
         }
         footer {
-            background-color: #343a40;
+            background:linear-gradient(to right, #64A, #41C0F2);
             color: #fff;
             text-align: center;
             padding: 10px;
@@ -55,8 +55,8 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-        <a class="navbar-brand" href="#">Minha Página</a>
+    <div class="container text-center">
+        <h1 class="mb-5">CriArt | Cadastro</h1>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item" id="loggedInUserContainer" style="display: none;">
@@ -67,7 +67,7 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container mb-3">
     <form id="registrationForm">
         <h2 class="mb-4">Cadastro</h2>
 
@@ -86,14 +86,14 @@
             <input type="password" class="form-control" id="password" required>
         </div>
 
-        <button type="button" class="btn btn-primary" onclick="registerUser()">Cadastrar</button>
+        <button type="button" class="btn btn-primary col-12 mt-2" onclick="registerUser()">Cadastrar</button>
     </form>
 
     <div id="output"></div>
 </div>
 
 <footer>
-    <p>&copy; 2024 Minha Página</p>
+    <p>CriArt - Todos os direitos reservados &copy;</p>
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
