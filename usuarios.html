@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuários Cadastrados</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyScK3WqfBqfE053s5P5I3BqotK6Ldy5l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyScK3WqfBqfE053s5P5I3BqotK6Ldy5l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.15.0/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,13 +15,16 @@
             padding: 20px;
             background-color: #f8f9fa;
         }
+
         .container {
             max-width: 800px;
         }
+
         h2 {
             color: #343a40;
             text-align: center;
         }
+
         .user-card {
             border: 1px solid #dee2e6;
             border-radius: 10px;
@@ -31,133 +34,102 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .user-card:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
+
         .bi-person {
             font-size: 2rem;
             margin-right: 10px;
             color: #007bff;
         }
+
         .user-info {
             display: flex;
             align-items: center;
         }
+
         .user-info span {
             margin-right: 10px;
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h2 class="mb-4"><i class="bi bi-person"></i> Usuários Cadastrados</h2>
+    <div class="container">
+        <h2 class="mb-4"><i class="bi bi-person"></i> Usuários Cadastrados</h2>
 
-    <div id="userList"></div>
-</div>
+        <div id="userList"></div>
+    </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var userListContainer = document.getElementById('userList');
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"
+        integrity="sha384-Rmtnrd9aoI8DB8LOxSjf0YqJpB+YM6Q6x6Z0HD6KuEdgDCs3nYsbv5muO8ltFRLj"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyScK3WqfBqfE053s5P5I3BqotK6Ldy5l"
+        crossorigin="anonymous"></script>
 
-        // Função para exibir usuários cadastrados
-        function displayUsers() {
-            for (var i = 0; i < localStorage.length; i++) {
-                var key = localStorage.key(i);
-                if (key !== 'loggedInUserName') {
-                    var userData = JSON.parse(localStorage.getItem(key));
-                    addUserCard(userData);
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var userListContainer = document.getElementById('userList');
+
+            // Verificação de autenticação
+            var authenticatedUser = localStorage.getItem('loggedInUserName');
+            var validCredentials = authenticatedUser === 'Smith';
+
+            if (validCredentials) {
+                // Se as credenciais forem válidas, exibe os usuários cadastrados
+                displayUsers();
+            } else {
+                // Se não, redireciona para a página de login
+                window.location.href = 'login.html';
+            }
+
+            // Função para exibir usuários cadastrados
+            function displayUsers() {
+                for (var i = 0; i < localStorage.length; i++) {
+                    var key = localStorage.key(i);
+                    if (key !== 'loggedInUserName') {
+                        var userData = JSON.parse(localStorage.getItem(key));
+                        addUserCard(userData);
+                    }
                 }
             }
-        }
 
-        // Função para adicionar um card de usuário ao container
-        function addUserCard(user) {
-            var userCard = document.createElement('div');
-            userCard.className = 'user-card';
+            // Função para adicionar um card de usuário ao container
+            function addUserCard(user) {
+                var userCard = document.createElement('div');
+                userCard.className = 'user-card';
 
-            var userIcon = document.createElement('i');
-            userIcon.className = 'bi bi-person';
+                var userIcon = document.createElement('i');
+                userIcon.className = 'bi bi-person';
 
-            var userInfo = document.createElement('div');
-            userInfo.className = 'user-info';
+                var userInfo = document.createElement('div');
+                userInfo.className = 'user-info';
 
-            var userName = document.createElement('span');
-            userName.textContent = user.name;
+                var userName = document.createElement('span');
+                userName.textContent = user.name;
 
-            var userEmail = document.createElement('span');
-            userEmail.textContent = user.email;
+                var userEmail = document.createElement('span');
+                userEmail.textContent = user.email;
 
-            userInfo.appendChild(userName);
-            userInfo.appendChild(userEmail);
+                userInfo.appendChild(userName);
+                userInfo.appendChild(userEmail);
 
-            userCard.appendChild(userIcon);
-            userCard.appendChild(userInfo);
+                userCard.appendChild(userIcon);
+                userCard.appendChild(userInfo);
 
-            userListContainer.appendChild(userCard);
-        }
-
-        // Chamada da função ao carregar a página
-        displayUsers();
-    });
-</script>
-<!-- Adicione este script ao final do seu arquivo usuarios.html, antes da tag </body> -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Função para exibir usuários cadastrados
-        function displayUsers() {
-            for (var i = 0; i < localStorage.length; i++) {
-                var key = localStorage.key(i);
-                if (key !== 'loggedInUserName') {
-                    var userData = JSON.parse(localStorage.getItem(key));
-                    addUserCard(userData);
-                }
+                userListContainer.appendChild(userCard);
             }
-        }
+        });
+    </script>
 
-        // Função para adicionar um card de usuário ao container
-        function addUserCard(user) {
-            var userCard = document.createElement('div');
-            userCard.className = 'user-card';
-
-            var userIcon = document.createElement('i');
-            userIcon.className = 'bi bi-person';
-
-            var userInfo = document.createElement('div');
-            userInfo.className = 'user-info';
-
-            var userName = document.createElement('span');
-            userName.textContent = user.name;
-
-            var userEmail = document.createElement('span');
-            userEmail.textContent = user.email;
-
-            userInfo.appendChild(userName);
-            userInfo.appendChild(userEmail);
-
-            userCard.appendChild(userIcon);
-            userCard.appendChild(userInfo);
-
-            userListContainer.appendChild(userCard);
-        }
-
-        var userListContainer = document.getElementById('userList');
-
-        // Verificação de autenticação
-        var authenticatedUser = localStorage.getItem('loggedInUserName');
-        var validCredentials = authenticatedUser === 'Smith' && localStorage.getItem('Smith') === '{"name":"Smith","email":"smith@example.com","password":"30072007"}';
-
-        if (validCredentials) {
-            // Se as credenciais forem válidas, exibe os usuários cadastrados
-            displayUsers();
-        } else {
-            // Se não, redireciona para a página de login
-            window.location.href = 'login.html';
-        }
-    });
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
+
 </html>
