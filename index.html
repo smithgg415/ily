@@ -172,6 +172,14 @@
                                 </ul>
                             </div>
                         </li>
+                        <!-- Adicione isso ao seu navbar existente na sua página principal -->
+                        <li class="nav-item" id="loggedInUserContainer" style="display: none;">
+                            <a class="nav-link" id="loggedInUserName"></a>
+                        </li>
+                        <li class="nav-item" id="cadastroLink">
+                            <a class="nav-link" href="cadastro.html">Cadastre-se</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -311,6 +319,17 @@
                 });
             });
         });
+        function showLoggedInUser() {
+        var storedName = localStorage.getItem('loggedInUserName');
+        if (storedName) {
+            document.getElementById('cadastroLink').style.display = 'none';
+            document.getElementById('loggedInUserName').textContent = 'Bem-vindo, ' + storedName + '!';
+            document.getElementById('loggedInUserContainer').style.display = 'block';
+        }
+    }
+
+    // Chamada da função ao carregar a página
+    showLoggedInUser();
     </script>
 </body>
 

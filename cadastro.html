@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyScK3WqfBqfE053s5P5I3BqotK6Ldy5l" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #343a40;
+            color: #fff;
+        }
+        .navbar-brand {
+            color: #fff;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+        #output {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Minha Página</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" id="loggedInUserContainer" style="display: none;">
+                    <a class="nav-link" id="loggedInUserName"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <form id="registrationForm">
+        <h2 class="mb-4">Cadastro</h2>
+
+        <div class="form-group">
+            <label for="name">Nome:</label>
+            <input type="text" class="form-control" id="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Senha:</label>
+            <input type="password" class="form-control" id="password" required>
+        </div>
+
+        <button type="button" class="btn btn-primary" onclick="registerUser()">Cadastrar</button>
+    </form>
+
+    <div id="output"></div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Minha Página</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js" integrity="sha384-Rmtnrd9aoI8DB8LOxSjf0YqJpB+YM6Q6x6Z0HD6KuEdgDCs3nYsbv5muO8ltFRLj" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyScK3WqfBqfE053s5P5I3BqotK6Ldy5l" crossorigin="anonymous"></script>
+
+<script>
+    function registerUser() {
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+
+        // Verifica se o email já está cadastrado
+        if (localStorage.getItem(email)) {
+            alert('Email já cadastrado!');
+            return;
+        }
+
+        // Cria um objeto com os dados do usuário
+        var user = {
+            name: name,
+            email: email,
+            password: password
+        };
+
+        // Armazena os dados no localStorage
+        localStorage.setItem(email, JSON.stringify(user));
+
+        // Armazena temporariamente o nome do usuário para exibição na página principal
+        localStorage.setItem('loggedInUserName', name);
+
+        // Exibe o nome do usuário no navbar da página principal
+        showLoggedInUser();
+
+        // Redireciona o usuário de volta para a página principal após o cadastro
+        window.location.href = 'index.html';
+    }
+
+    // Função para exibir o nome do usuário no navbar
+    function showLoggedInUser() {
+        var storedName = localStorage.getItem('loggedInUserName');
+        if (storedName) {
+            document.getElementById('loggedInUserName').textContent = 'Bem-vindo, ' + storedName + '!';
+            document.getElementById('loggedInUserContainer').style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>
