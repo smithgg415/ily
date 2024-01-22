@@ -294,15 +294,9 @@
 
     <footer id="footer">
         Todos os direitos reservados - CriArt® 2023<br>
-        <a href="usuarios.html"><button class="users col-12 bg-dark text-light">Usuários cadastrados.<br>Apenas
-                Desenvolvedores!</button></a>
+       <a id="usuariosLink" class="nav-link" href="usuarios.html"><i class="bi bi-person-fill"></i> Usuários</a>
+
     </footer>
-    <!--<div id="floating-button text-light">
-        <a href="emais.html" class="floating-btn">
-            <i class="bi bi-envelope-check-fill"></i>
-        </a>
-        <p>Tem ideias do que adicionar?<br>Nos envie!</p>
-    </div>-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <!-- Bootstrap JS and dependencies -->
@@ -330,19 +324,23 @@
                     }
                 });
             });
-        });
-        /*function showLoggedInUser() {
+        }); function showLoggedInUser() {
             var storedName = localStorage.getItem('loggedInUserName');
             if (storedName) {
                 document.getElementById('cadastroLink').style.display = 'none';
                 document.getElementById('loggedInUserName').textContent = 'Bem-vindo, ' + storedName + '!';
                 document.getElementById('loggedInUserContainer').style.display = 'block';
             }
+
+            // Adicione o seguinte código para redirecionar para 'usuarios.html'
+            var usuariosLink = document.getElementById('usuariosLink');
+            if (usuariosLink) {
+                usuariosLink.addEventListener('click', function () {
+                    window.location.href = 'usuarios.html';
+                });
+            }
         }
 
-        // Chamada da função ao carregar a página
-        showLoggedInUser();
-        */
     </script>
 </body>
 
