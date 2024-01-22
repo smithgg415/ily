@@ -182,14 +182,14 @@
                                 </ul>
                             </div>
                         </li>
-                        <!-- Adicione isso ao seu navbar existente na sua página principal -->
+                        <!-- Adicione isso ao seu navbar existente na sua página principal 
                         <li class="nav-item" id="loggedInUserContainer" style="display: none;">
                             <a class="nav-link" id="loggedInUserName"></a>
                         </li>
                         <li class="nav-item" id="cadastroLink">
                             <a class="nav-link" href="cadastro.html"><i class="bi bi-person-add text-light"></i></a>
                         </li>
-
+                        -->
                     </ul>
                 </div>
             </div>
@@ -294,7 +294,7 @@
 
     <footer id="footer">
         Todos os direitos reservados - CriArt® 2023<br>
-       <a id="usuariosLink" class="nav-link text-light" href="usuarios.html"><i class="bi bi-person-fill"></i> Usuários</a>
+        <!--<a id="usuariosLink" class="nav-link text-light" href="usuarios.html"><i class="bi bi-person-fill"></i> Usuários</a>-->
 
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
@@ -324,7 +324,8 @@
                     }
                 });
             });
-        }); function showLoggedInUser() {
+        });
+        /* function showLoggedInUser() {
             var storedName = localStorage.getItem('loggedInUserName');
             if (storedName) {
                 document.getElementById('cadastroLink').style.display = 'none';
@@ -332,7 +333,7 @@
                 document.getElementById('loggedInUserContainer').style.display = 'block';
             }
 
-            // Adicione o seguinte código para redirecionar para 'usuarios.html'
+             Adicione o seguinte código para redirecionar para 'usuarios.html'
             var usuariosLink = document.getElementById('usuariosLink');
             if (usuariosLink) {
                 usuariosLink.addEventListener('click', function () {
@@ -340,7 +341,7 @@
                 });
             }
         }
-
+*/
     </script>
 </body>
 
