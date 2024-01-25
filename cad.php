@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <h1>Resultado de processamento de dados</h1>
+    </header>
     <?php
     var_dump($_GET)
     ?>
