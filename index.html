@@ -141,48 +141,6 @@
             border: none;
             border-radius: 13px;
         }*/
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            /* Cor de fundo da tela de carregamento */
-        }
-
-        .loader-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.9);
-            /* Cor de fundo semi-transparente */
-        }
-
-        .loader {
-            border: 8px solid #3498db;
-            /* Cor da borda do spinner */
-            border-top: 8px solid #f3f3f3;
-            /* Cor do topo do spinner */
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            /* Animação de rotação */
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
     </style>
 </head>
 
@@ -275,7 +233,7 @@
         <div class="row">
             <div class="col-md-6">
                 <a href="formatos/storie_ig.html" style="text-decoration: none;">
-                    <div class="rectangle" id="meuBotao">
+                    <div class="rectangle">
                         <i class="bi bi-instagram"></i>
                         <h3>Storie do Instagram</h3>
                         <p>Crie designs nesse formato!</p>
@@ -371,6 +329,7 @@
                 });
             });
         });
+        /*
         document.getElementById("meuBotao").addEventListener("click", function () {
             // Exibir a tela de carregamento
             document.getElementById("loader-wrapper").style.display = "block";
@@ -380,7 +339,7 @@
                 window.location.href = "logotipo.html";
             }, 3000); // Redirecionar após 3 segundos (3000 milissegundos)
         });
-        /* function showLoggedInUser() {
+         function showLoggedInUser() {
             var storedName = localStorage.getItem('loggedInUserName');
             if (storedName) {
                 document.getElementById('cadastroLink').style.display = 'none';
